@@ -9,6 +9,15 @@ namespace FrontEnd.Helpers.Implementations
     {
         IServiceRepository _IServiceRepository;
 
+        Shipper Convertir(ShipperViewModel shipper)
+        {
+            return new Shipper
+            {
+                ShipperId = shipper.ShipperId,
+                CompanyName = shipper.CompanyName
+            };
+        }
+
         public ShipperHelper(IServiceRepository serviceRepository)
         {
             _IServiceRepository = serviceRepository;
@@ -56,6 +65,31 @@ namespace FrontEnd.Helpers.Implementations
             };
         
             return resultado;
+        }
+
+        public ShipperViewModel Add(ShipperViewModel shipper)
+        {
+            HttpResponseMessage response = _IServiceRepository.PostResponse("api/Shipper", Convertir(shipper));
+            if(response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().Result;
+            }
+            return shipper;
+        }
+
+        public ShipperViewModel Update(ShipperViewModel shipper)
+        {
+            HttpResponseMessage response = _IServiceRepository.PutResponse("api/Shipper", Convertir(shipper));
+            if (response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().Result;
+            }
+            return shipper;
+        }
+
+        public ShipperViewModel Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

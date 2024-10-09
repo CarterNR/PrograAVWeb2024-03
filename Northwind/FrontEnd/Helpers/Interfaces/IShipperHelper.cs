@@ -1,4 +1,5 @@
-﻿using FrontEnd.Models;
+﻿using FrontEnd.ApiModels;
+using FrontEnd.Models;
 
 namespace FrontEnd.Helpers.Interfaces
 {
@@ -7,5 +8,9 @@ namespace FrontEnd.Helpers.Interfaces
         List<ShipperViewModel> GetShippers();
 
         ShipperViewModel GetShipper(int id);
+        ShipperViewModel Add(ShipperViewModel shipper);
+        ShipperViewModel Update(ShipperViewModel shipper);
+        ShipperViewModel Delete(int id);
+
     }
 }
