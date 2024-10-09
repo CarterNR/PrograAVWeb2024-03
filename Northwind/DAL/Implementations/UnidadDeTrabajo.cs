@@ -11,6 +11,7 @@ namespace DAL.Implementations
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
         public IShipperDAL ShipperDAL { get; set; }
+        public ISupplierDAL SupplierDAL { get; set; }
        
         private NorthwndContext _northWindContext;
 
