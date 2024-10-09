@@ -78,16 +78,19 @@ namespace FrontEnd.Controllers
         // GET: ShipperController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var shipper = _shipperHelper.GetShipper(id);
+
+            return View(shipper);
         }
 
         // POST: ShipperController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(ShipperViewModel shipper)
         {
             try
             {
+                _shipperHelper.Delete(shipper.ShipperId);
                 return RedirectToAction(nameof(Index));
             }
             catch

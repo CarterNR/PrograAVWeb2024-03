@@ -10,7 +10,7 @@ namespace FrontEnd.Helpers.Interfaces
         ShipperViewModel GetShipper(int id);
         ShipperViewModel Add(ShipperViewModel shipper);
         ShipperViewModel Update(ShipperViewModel shipper);
-        ShipperViewModel Delete(int id);
+        void Delete(int id);
 
     }
 }

@@ -87,9 +87,11 @@ namespace FrontEnd.Helpers.Implementations
             return shipper;
         }
 
-        public ShipperViewModel Delete(int id)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage responseMessage = _IServiceRepository.DeleteResponse("api/Shipper/" + id.ToString());
+            if (responseMessage.IsSuccessStatusCode) { var content = responseMessage.Content; }
+           
         }
     }
 }
